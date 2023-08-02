@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: consolas;
+        }
+        body{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #111;
+
+        }
+        .scan{
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .scan .qrcode{
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background: url(qr.jpeg);
+            background-size:400px;
+        }
+        .scan .qrcode::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(green.jpeg);
+            background-size: 400px;
+            animation: animate 4s ease-in-out infinite;
+        }
+        @keyframes animate{
+            0%{
+                height: 20px;
+            }
+            50%{
+                height: calc(100% - 20px);
+            }
+        }
+        .scan .qrcode::after{
+            content: '';
+            position: absolute;
+            inset: 20px;
+            width: calc(100%-40px);
+            height: 2px;
+            background: rgb(63, 255, 114);
+            overflow: hidden;
+            filter: drop-shadow(0 0 20px rgba(94, 255, 85, 0.867)) drop-shadow(0 0 60px #35fd35);
+            animation: animateLine 4s ease-in-out infinite;
+        }
+        @keyframes animateLine
+        {
+        
+            0%{
+               top: 20px;
+            }
+            50%{
+               top:calc(100% - 20px);
+            }
+        }
+        
+        .scan .qrcode::after{
+            content: '';
+            position: absolute;
+            inset: 20px;
+            width: calc(100%-40px);
+            height: 2px;
+            background: rgb(63, 255, 114);
+            filter: drop-shadow(0 0 20px rgba)drop-shadow(0 0 60px #35fd35);
+            animation: animateLine 4s ease-in-out infinite;
+        }
+        @keyframes animateLine
+        {
+            0%{
+               top: 20px;
+            }
+            50%{
+                top: calc(100% - 20px);
+            }
+        }
+        .border{
+            position: absolute;
+            inset:0;
+            background: url(border.jpeg);
+            background-repeat:no-repeat;
+            background-size: 400px;
+            animation: animateText 0.5s linear infinite;
+
+        }
+        .scan h3{
+            text-transform: uppercase;
+            font-size: 2em;
+            margin-top: 20px;
+            color: #fff;
+            filter: drop-shadow(0 0 20px #fff) drop-shadow(0 0 60px #fff);
+            animation: animateText 0.5s steps(1) infinite;
+             
+        }
+        @keyframes animateText
+        {
+           
+            0%,100%{
+               opacity: 0;
+            }
+            50%{
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="scan">
+        <div class="qrcode"></div>
+        <h3>qr code scanning.....</h3>
+        <div  class="border"></div>
+    </div>
+
+</body>
+</html>
